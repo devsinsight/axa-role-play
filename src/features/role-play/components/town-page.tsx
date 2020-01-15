@@ -8,16 +8,7 @@ import {
   getProfessionList
 } from "../redux/actions";
 import "react-multi-carousel/lib/styles.css";
-import {
-  Container,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  createStyles,
-  makeStyles,
-  Theme
-} from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import { PaginationModel } from "../models/pagination.model";
 import { SlideModel } from "../models/slide.model";
 import InhabitantsList from "./inhabitants-list";
