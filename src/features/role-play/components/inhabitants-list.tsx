@@ -62,8 +62,6 @@ const InhabitantsList = ({ pagination, slide, next, prev }: Props) => {
           ))}
         </Carousel>
       </Slide>
-      Page {pagination.page} of {pagination.totalPages} ({pagination.total}{" "}
-      Records)
     </div>
   );
 };

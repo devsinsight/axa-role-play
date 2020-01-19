@@ -8,7 +8,7 @@ import {
   getProfessionList
 } from "../redux/actions";
 import "react-multi-carousel/lib/styles.css";
-import { Container } from "@material-ui/core";
+import { Container, Typography } from "@material-ui/core";
 import { PaginationModel } from "../models/pagination.model";
 import { SlideModel } from "../models/slide.model";
 import InhabitantsList from "./inhabitants-list";
@@ -97,7 +97,11 @@ const TownPage: FunctionComponent<TownProps> = ({
 
   return (
     <Container fixed>
-      <h2>Wellcome to Brastlewark town</h2>
+      <h3>Wellcome to Brastlewark town</h3>
+      <h5 style={{ marginTop: "-15px" }}>
+        Page {pagination.page} of {pagination.totalPages}
+      </h5>
+
       <ProfessionFilter
         profession={profession}
         professions={professions}
