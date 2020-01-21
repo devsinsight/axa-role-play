@@ -1,10 +1,12 @@
 import { InhabitantModel } from "../models/inhabitant.model";
 
 export function getInhabitantsList(town: string = "Brastlewark") {
+  console.log("hey")
   return fetch(
     "https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json"
   )
-    .then((data: any) => data[town].map((m: InhabitantModel) => m))
+    .then(response => response.json())
+    .then(data => data[town].map((m: InhabitantModel) => m))
     .then(data => {
       setCache(town, data);
       return data;

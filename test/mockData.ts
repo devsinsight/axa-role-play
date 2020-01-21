@@ -101,7 +101,7 @@ export const items = [
 export const rawItems = { Brastlewark: items };
 export const filter = new FilterModel("All");
 export const pagination = new PaginationModel(1, 3, 6, items, filter);
-export const slide = new SlideModel(true, "left");
+export const slide = new SlideModel(false, "left");
 export const professions = [
   "All",
   "Cook",

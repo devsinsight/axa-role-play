@@ -1,55 +1,44 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
-import TownPage from "../components/town-page";
+import renderer from "react-test-renderer";
 import { pagination, slide, professions } from "../../../../test/mockData";
-import { combineReducers, createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import townReducer from "../../role-play/redux/reducer";
-import { Provider as ReduxProvider } from "react-redux";
-import { Container } from "@material-ui/core";
-import ProfessionFilter from "../components/inhabitants-filter";
-import InhabitantsList from "../components/inhabitants-list";
+import ProfessionFilter from '../components/inhabitants-filter';
+import InhabitantsList from '../components/inhabitants-list';
+import Friends from '../components/inhabitants-friends';
+import Professions from '../components/inhabitants-professions';
 
-const rootReducer = combineReducers({
-  townReducer
+it("should render ProfessionFilter component", () => {
+  const professionFilter = renderer.create(<ProfessionFilter
+    profession={"All"}
+    professions={professions}
+    handleChange={jest.fn()}
+  />)
+
+  expect(professionFilter).toMatchSnapshot();
 });
 
-const store: any = createStore(rootReducer, applyMiddleware(thunk));
+it("should render InhabitantsList component when transition 'in' is false", () => {
+  const inhabitantsList = renderer.create(<InhabitantsList
+    pagination={pagination}
+    slide={slide}
+    next={jest.fn()}
+    prev={jest.fn()}
+  />)
 
-function render(args: any) {
-  const defaultProps = {
-    getInhabitantsList: jest.fn(),
-    setSlide: jest.fn(),
-    setPaginationSize: jest.fn(),
-    getProfessionList: jest.fn(),
-    pagination: pagination,
-    slide: slide,
-    professions: professions
-  };
+  expect(inhabitantsList).toMatchSnapshot();
+});
 
-  const props = { ...defaultProps, ...args };
+it("should render gnomes friends", () => {
+  const inhabitantsList = renderer.create(<Friends
+    friends={["cat", "dog"]}
+  />)
 
-  return mount(
-    <ReduxProvider store={store}>
-      <TownPage {...props} />
-    </ReduxProvider>
-  );
-}
+  expect(inhabitantsList).toMatchSnapshot();
+});
 
-it("should render without throwing an error", () => {
-  const townPage = render({});
-  const professionFilterProps = {
-    profession: "All",
-    professions: professions,
-    handleChange: jest.fn()
-  };
+it("should render gnomes profressions", () => {
+  const inhabitantsList = renderer.create(<Professions
+    professions={professions}
+  />)
 
-  const inhabitantsList = {
-    pagination: pagination,
-    slide: slide,
-    next: jest.fn(),
-    prev: jest.fn()
-  };
-
-  expect(townPage).toMatchSnapshot();
+  expect(inhabitantsList).toMatchSnapshot();
 });

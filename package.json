@@ -5,7 +5,7 @@
   "main": "index.tsx",
   "scripts": {
     "bundle": "webpack",
-    "test": "jest --no-cache",
+    "test": "jest --no-cache --updateSnapshot",
     "start": "webpack-dev-server --config webpack.config.development.ts --mode development --open --hot",
     "build": "webpack --mode production --config webpack.config.production.ts",
     "check-types": "tsc"
@@ -51,7 +51,6 @@
     "webpack-dev-server": "^3.10.1"
   },
   "jest": {
-    "automock": false,
     "setupFiles": [
       "./test/setup.js"
     ],

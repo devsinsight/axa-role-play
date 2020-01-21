@@ -1,3 +1,169 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render without throwing an error 1`] = `false`;
+exports[`should render InhabitantsList component when transition 'in' is false 1`] = `<div />`;
+
+exports[`should render ProfessionFilter component 1`] = `
+<div
+  className="MuiFormControl-root makeStyles-formControl-1"
+>
+  <label
+    className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-filled MuiFormLabel-filled"
+    data-shrink={true}
+    id="demo-simple-select-filled-label"
+  >
+    Professions
+  </label>
+  <div
+    className="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-formControl"
+    onClick={[Function]}
+  >
+    <div
+      aria-haspopup="listbox"
+      aria-labelledby="demo-simple-select-label demo-simple-select"
+      className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-filled MuiInputBase-input MuiFilledInput-input"
+      id="demo-simple-select"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      All
+    </div>
+    <input
+      onAnimationStart={[Function]}
+      type="hidden"
+      value="All"
+    />
+    <svg
+      aria-hidden="true"
+      className="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconFilled"
+      focusable="false"
+      role="presentation"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M7 10l5 5 5-5z"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`should render gnomes friends 1`] = `
+<span>
+  My friends:
+  <span>
+     
+    cat
+    ,
+  </span>
+  <span>
+     
+    dog
+    .
+  </span>
+</span>
+`;
+
+exports[`should render gnomes profressions 1`] = `
+<span>
+  My professions:
+  <span>
+     
+    All
+    ,
+  </span>
+  <span>
+     
+    Cook
+    ,
+  </span>
+  <span>
+     
+    Smelter
+    ,
+  </span>
+  <span>
+     
+    Tinker
+    ,
+  </span>
+  <span>
+     
+    Carpenter
+    ,
+  </span>
+  <span>
+     
+    Farmer
+    ,
+  </span>
+  <span>
+     
+    Stonecarver
+    ,
+  </span>
+  <span>
+     
+    Brewer
+    ,
+  </span>
+  <span>
+     
+    Tax inspector
+    ,
+  </span>
+  <span>
+     
+    Prospector
+    ,
+  </span>
+  <span>
+     
+    Baker
+    ,
+  </span>
+  <span>
+     
+    Miner
+    ,
+  </span>
+  <span>
+     
+    Medic
+    ,
+  </span>
+  <span>
+     
+    Gemcutter
+    ,
+  </span>
+  <span>
+     
+    Mason
+    ,
+  </span>
+  <span>
+     
+    Tailor
+    ,
+  </span>
+  <span>
+     
+    Metalworker
+    ,
+  </span>
+  <span>
+     
+    Woodcarver
+    ,
+  </span>
+  <span>
+     
+    Potter
+    .
+  </span>
+</span>
+`;
