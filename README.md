@@ -21,9 +21,7 @@ To run the tests:
 
 ## Authors
 
-* **José Olivares** - *Initial work* - [PurpleBooth](https://github.com/devsinsight)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **José Olivares** - *Initial work* - [AXA Role-play](https://github.com/devsinsight)
 
 ## License
 
