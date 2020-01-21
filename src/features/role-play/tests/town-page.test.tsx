@@ -51,10 +51,5 @@ it("should render without throwing an error", () => {
     prev: jest.fn()
   };
 
-  expect(
-    townPage
-      .children(<Container fixed></Container>)
-      .find(<h3></h3>)
-      .contains("Wellcome to Brastlewark town")
-  ).toEqual(true);
+  expect(townPage).toMatchSnapshot();
 });
