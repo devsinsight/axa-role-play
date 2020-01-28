@@ -30,6 +30,12 @@ const InhabitantsList = ({ pagination, slide, next, prev }: Props) => {
           className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left"
         ></button>
         <button
+          style={{
+            display:
+              pagination.page == Number(pagination.totalPages)
+                ? "none"
+                : "block"
+          }}
           onClick={() => {
             next();
           }}
@@ -42,12 +48,7 @@ const InhabitantsList = ({ pagination, slide, next, prev }: Props) => {
 
   return (
     <div>
-      <Slide
-        direction={slide.direction}
-        in={slide.checked}
-        mountOnEnter
-        unmountOnExit
-      >
+      <Slide direction={slide.direction} in={slide.checked}>
         <Carousel
           responsive={responsive}
           slidesToSlide={3}

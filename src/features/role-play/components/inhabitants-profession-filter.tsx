@@ -18,23 +18,27 @@ interface Props {
 const ProfessionFilter = ({ profession, handleChange, professions }: Props) => {
   const classes = useStyles();
   return (
-    <FormControl variant="filled" className={classes.formControl}>
-      <InputLabel id="demo-simple-select-filled-label">Professions</InputLabel>
-      <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={profession}
-        onChange={event => {
-          handleChange(event);
-        }}
-      >
-        {professions.map(p => (
-          <MenuItem key={p} value={p}>
-            {p}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+    <div className="filter">
+      <FormControl variant="filled" className={classes.formControl}>
+        <InputLabel id="demo-simple-select-filled-label">
+          Professions
+        </InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={profession}
+          onChange={event => {
+            handleChange(event);
+          }}
+        >
+          {professions.map(p => (
+            <MenuItem key={p} value={p}>
+              {p}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </div>
   );
 };
 

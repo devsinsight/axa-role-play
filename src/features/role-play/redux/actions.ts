@@ -5,6 +5,7 @@ import { Dispatch } from "redux";
 import { PaginationModel } from "../models/pagination.model";
 import { SlideModel } from "../models/slide.model";
 import { FilterModel } from "../models/filter.model";
+import { ResponseData } from "../models/response.model";
 
 export function getInhabitantsListSuccess(pagination: PaginationModel) {
   return { type: type.GET_INHABITANTS_LIST, pagination };
@@ -40,18 +41,23 @@ export function setSlide(
 export function getInhabitantsList(
   page: number,
   size: number,
-  profession: string = "All"
+  profession: string = "All",
+  age: string = "center"
 ) {
   return function(dispatch: Dispatch) {
     let cachedData = service.getCache();
+
     if (cachedData.length) {
       return dispatch(
         getInhabitantsListSuccess(
           paginate(
-            filterByProfession(cachedData, profession),
+            ResponseData(cachedData)
+              .filterByProfession(profession)
+              .filterByAge(age)
+              .getData(),
             page,
             size,
-            new FilterModel(profession)
+            new FilterModel(profession, age)
           )
         )
       );
@@ -62,10 +68,13 @@ export function getInhabitantsList(
           return dispatch(
             getInhabitantsListSuccess(
               paginate(
-                filterByProfession(serviceData, profession),
+                ResponseData(serviceData)
+                  .filterByProfession(profession)
+                  .filterByAge(age)
+                  .getData(),
                 page,
                 size,
-                new FilterModel(profession)
+                new FilterModel(profession, age)
               )
             )
           );
@@ -91,6 +100,17 @@ export function getProfessionList() {
   };
 }
 
+const getProfessions = (data: Array<InhabitantModel>): Array<string> => {
+  let professions = new Set();
+  professions.add("All");
+  data.forEach(d => {
+    d.professions.forEach((p: string) => {
+      professions.add(p);
+    });
+  });
+  return [...professions] as Array<string>;
+};
+
 const paginate = (
   data: Array<any>,
   page: number,
@@ -104,23 +124,4 @@ const paginate = (
     data.slice((page - 1) * size, page * size),
     filter
   );
-};
-
-const getProfessions = (data: Array<InhabitantModel>): Array<string> => {
-  let professions = new Set();
-  professions.add("All");
-  data.forEach(d => {
-    d.professions.forEach((p: string) => {
-      professions.add(p);
-    });
-  });
-  return [...professions] as Array<string>;
-};
-
-const filterByProfession = (
-  data: Array<InhabitantModel>,
-  profession: string
-) => {
-  if (profession == "All") return data;
-  return data.filter(d => d.professions.indexOf(profession) > -1);
 };

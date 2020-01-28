@@ -5,6 +5,7 @@ import TownPage from "./role-play/components/town-page";
 import { CssBaseline, MuiThemeProvider } from "@material-ui/core";
 import { createMuiTheme } from "@material-ui/core/styles";
 import Header from "./shared/components/header";
+import AboutPage from "./about/components/about-page";
 
 const theme = createMuiTheme({
   palette: {
@@ -21,6 +22,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={TownPage} />
           <Route exact path="/town" component={TownPage} />
+          <Route exact path="/about" component={AboutPage} />
           <Route component={PageNotFound} />
         </Switch>
       </MuiThemeProvider>

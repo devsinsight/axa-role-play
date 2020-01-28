@@ -32,7 +32,9 @@ const InhabitantItem = ({ item }: { item: InhabitantModel }) => {
           </Avatar>
         }
         title={item.name}
-        subheader={"Age: " + item.age}
+        subheader={
+          "Age: " + item.age + " | Weight: " + item.weight.toFixed(0) + " Kg."
+        }
       />
       <CardActionArea>
         <CardMedia
@@ -62,14 +64,6 @@ const InhabitantItem = ({ item }: { item: InhabitantModel }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <Favorite />
-        </IconButton>
-        <IconButton aria-label="share">
-          <Share />
-        </IconButton>
-      </CardActions>
     </Card>
   );
 };

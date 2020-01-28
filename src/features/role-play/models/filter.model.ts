@@ -1,3 +1,3 @@
 export class FilterModel {
-  constructor(public profession: string) {}
+  constructor(public profession: string, public age: string) {}
 }

@@ -1,0 +1,35 @@
+.filters {
+  padding: 15px 15px 15px;
+  border: 1px dotted white;
+  width: calc(90% + 20px);
+}
+.filter {
+  display: inline-block;
+
+  &:nth-of-type(1) {
+    position: relative;
+    top: -18px;
+    height: 22px;
+  }
+  &:nth-of-type(2) {
+    margin-left: 20px;
+    bottom: 1px;
+  }
+}
+
+.MuiFormControl-root {
+  height: 22px;
+}
+
+@media (max-width: 1024px) {
+  .filter {
+    &:nth-of-type(1) {
+      margin-bottom: 30px;
+      margin-top: 20px;
+    }
+    &:nth-of-type(2) {
+      margin-left: 0;
+      bottom: 1px;
+    }
+  }
+}

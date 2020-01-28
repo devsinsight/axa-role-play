@@ -12,7 +12,8 @@ import { Container } from "@material-ui/core";
 import { PaginationModel } from "../models/pagination.model";
 import { SlideModel } from "../models/slide.model";
 import InhabitantsList from "./inhabitants-list";
-import ProfessionFilter from "./inhabitants-filter";
+import ProfessionFilter from "./inhabitants-profession-filter";
+import AgeFilter from "./inhabitants-age-filter";
 
 interface TownProps {
   getInhabitantsList: Function;
@@ -55,7 +56,8 @@ const TownPage: FunctionComponent<TownProps> = ({
         getInhabitantsList(
           pagination.page,
           getPageSize(),
-          pagination.filter.profession
+          pagination.filter.profession,
+          pagination.filter.age
         );
 
       if (!professions.length) getProfessionList();
@@ -71,7 +73,8 @@ const TownPage: FunctionComponent<TownProps> = ({
       getInhabitantsList(
         pagination.next,
         pagination.size,
-        pagination.filter.profession
+        pagination.filter.profession,
+        pagination.filter.age
       );
       setSlide(true, "left");
     }, 300);
@@ -83,16 +86,37 @@ const TownPage: FunctionComponent<TownProps> = ({
       getInhabitantsList(
         pagination.prev,
         pagination.size,
-        pagination.filter.profession
+        pagination.filter.profession,
+        pagination.filter.age
       );
       setSlide(true, "right");
     }, 300);
   };
   const [profession, setProfession] = React.useState("All");
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const [alignment, setAlignment] = React.useState("center");
+
+  const handleProfessionChange = (
+    event: React.ChangeEvent<{ value: unknown }>
+  ) => {
     setProfession(event.target.value as string);
 
-    getInhabitantsList(1, getPageSize(), event.target.value as string);
+    getInhabitantsList(
+      1,
+      getPageSize(),
+      event.target.value as string,
+      pagination.filter.age
+    );
+  };
+
+  const handleAgeChange = (newAlignment: string) => {
+    setAlignment(newAlignment);
+
+    getInhabitantsList(
+      1,
+      getPageSize(),
+      pagination.filter.profession,
+      newAlignment
+    );
   };
 
   return (
@@ -101,12 +125,14 @@ const TownPage: FunctionComponent<TownProps> = ({
       <h5 style={{ marginTop: "-15px" }}>
         Page {pagination.page} of {pagination.totalPages}
       </h5>
-
-      <ProfessionFilter
-        profession={profession}
-        professions={professions}
-        handleChange={handleChange}
-      />
+      <div className="filters">
+        <ProfessionFilter
+          profession={profession}
+          professions={professions}
+          handleChange={handleProfessionChange}
+        />
+        <AgeFilter alignment={alignment} handleChange={handleAgeChange} />
+      </div>
       <br />
       <InhabitantsList
         pagination={pagination}

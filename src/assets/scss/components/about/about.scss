@@ -1,0 +1,19 @@
+.about {
+  &__container {
+    display: flex;
+    justify-content: center;
+
+    padding: 0.5rem;
+    height: 600px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.03);
+    border-radius: 4px;
+
+    color: rgb(241, 238, 238);
+    font-family: "Lucida Console", Monaco, monospace;
+    span {
+      justify-content: center;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
